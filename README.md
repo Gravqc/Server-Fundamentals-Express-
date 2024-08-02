@@ -1,5 +1,8 @@
 # Client-Server Interaction:
 
-Client makes an HTTP request to the server.
-Client-side code requests data from the server-side application (Express API).
-Express API receives the request, performs business logic, retrieves/pushes data, and responds to the client.
+- Client makes an HTTP request to the server.
+- Client-side code requests data from the server-side application (Express API).
+- Express API receives the request, performs business logic, retrieves/pushes data, and responds to the client.
+- Example: Restaurant Scenario
+  Client: Orders food.
+  Server: Waiter (server) asks for the order, relays it to the kitchen (server room), and returns with the food (response).
