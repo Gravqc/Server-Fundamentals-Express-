@@ -14,7 +14,12 @@
 
 # Requests:
 
-- Get
+- Get: When you want to query the server for some data.
+  ex: // these are all routes that the user will query the server to do something
+  // "/"=> base url so when the client accesses the base url then the server will be sending hello world
+  app.get("/", (request, response) => {
+  response.status(201).send({ msg: "Hellow" });
+  });
 - Post
 - Delete
 - Put
