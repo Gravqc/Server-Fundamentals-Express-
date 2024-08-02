@@ -42,3 +42,13 @@ Route parameters are named URL segments that are used to capture the values spec
 # Middleware:
 
 - Certain functions that are going to get invoked before certain api requests are handled
+
+# Put & Patch Request:
+
+- Both are used to update data but differ on how they update data
+- Patch: Updates a record partially(for ex: updating one field in the entry/row)
+- Put: Update the record in its entirety (for ex if you want to update just one attribute then you would have to pass the old value again so that the attribute values that you dont want to change dont get overwritten)
+
+# Delete Request:
+
+- Delete records from the database
