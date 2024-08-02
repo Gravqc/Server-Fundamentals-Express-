@@ -4,6 +4,14 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+const users = [
+  { id: 1, userName: "Gaurav", email: "email.com" },
+  { id: 2, userName: "Gaurav", email: "email.com" },
+  { id: 3, userName: "Gaurav", email: "email.com" },
+];
+
+//GET REQUEST
+
 // these are all routes that the user will query the server to do something
 // "/"=> base url so when the client accesses the base url then the server will be sending hello world
 app.get("/", (request, response) => {
@@ -11,12 +19,32 @@ app.get("/", (request, response) => {
 });
 
 app.get("/api/users", (request, response) => {
-  response.send([
-    { id: 1, userName: "Gaurav", email: "email.com" },
-    { id: 1, userName: "Gaurav", email: "email.com" },
-    { id: 1, userName: "Gaurav", email: "email.com" },
+  response.send(users);
+});
+// create a get request that will send that particular user also handle potential errors
+
+app.get("/api/users/:id", (request, response) => {
+  const parsedId = parseInt(request.params.id);
+  if (isNaN(parsedId)) {
+    return response.status(400).send({ msg: "invalid id you put" });
+  }
+  const finduser = users.find((user) => user.id === parsedId);
+  if (!finduser) return response.sendStatus(404);
+  return response.send(finduser);
+});
+
+app.get("/api/products", (request, response) => {
+  response.status(202).send([
+    {
+      id: 1,
+      name: "Hello world",
+    },
   ]);
 });
+
+// POST REQUEST
+//can reuse path when the type of request is different
+app.post("/api/users");
 
 app.listen(PORT, () => {
   console.log(`Running on ${PORT}`);
