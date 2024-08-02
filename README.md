@@ -14,6 +14,8 @@
 
 # Get Requests:
 
+- Get data using a get request
+
 When you want to query the server for some data.
 
 - The "/"
@@ -31,3 +33,12 @@ Route parameters are named URL segments that are used to capture the values spec
 
 - Extra bits at the end of a URL (e.g., form inputs, search bar)
 - ex: localhost/products?key=value&key2=value2
+
+# POST Request:
+
+- Post data using a post request
+- Creat a resource on the backend, and that backend will save it to some db, or some file, etc.
+
+# Middleware:
+
+- Certain functions that are going to get invoked before certain api requests are handled
