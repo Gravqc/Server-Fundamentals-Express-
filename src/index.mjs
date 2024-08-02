@@ -4,6 +4,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+
 const users = [
   { id: 1, userName: "Gaurav", email: "email.com" },
   { id: 2, userName: "Gaurav", email: "email.com" },
@@ -44,7 +46,46 @@ app.get("/api/products", (request, response) => {
 
 // POST REQUEST
 //can reuse path when the type of request is different
-app.post("/api/users");
+app.post("/api/users", (request, response) => {
+  const { body } = request;
+  console.log(request.body);
+  const newUser = { id: users[users.length - 1].id + 1, ...body };
+  users.push(newUser);
+  return response.status(200).send(users);
+});
+
+//PUT REQUEST
+app.put("/api/users/:id", (request, response) => {
+  const {
+    body,
+    params: { id },
+  } = request;
+  const parsedId = parseInt(id);
+  if (isNaN(parsedId)) return response.sendStatus(400);
+
+  const findUserIndex = users.findIndex((user) => user.id === parsedId);
+
+  if (findUserIndex === -1) return response.sendStatus(404);
+
+  users[findUserIndex] = { id: parsedId, ...body };
+  return response.sendStatus(200);
+});
+
+// PATCH REQUEST
+app.patch("/api/users/:id", (request, response) => {
+  const {
+    body,
+    params: { id },
+  } = request;
+  const parsedId = parseInt(id);
+  if (isNaN(parsedId)) return response.sendStatus(400);
+
+  const findUserIndex = users.findIndex((user) => user.id === parsedId);
+
+  if (findUserIndex === -1) return response.sendStatus(404);
+
+  users[findUserIndex] = { ...users[findUserIndex], ...body };
+});
 
 app.listen(PORT, () => {
   console.log(`Running on ${PORT}`);
