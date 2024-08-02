@@ -1,0 +1,21 @@
+{
+  "name": "server-fundamentals",
+  "version": "1.0.0",
+  "description": "- Client makes an HTTP request to the server.\r - Client-side code requests data from the server-side application (Express API).\r - Express API receives the request, performs business logic, retrieves/pushes data, and responds to the client.\r - Example: Restaurant Scenario\r   Client: Orders food.\r   Server: Waiter (server) asks for the order, relays it to the kitchen (server room), and returns with the food (response).",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/index.mjs",
+    "start": "node ./src/index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "type": "module"
+}
