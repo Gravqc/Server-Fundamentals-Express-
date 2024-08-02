@@ -9,17 +9,25 @@
 
 # Route
 
-- Define/register routes, Route can be thought of as a path in your serverapp ex:localhosttest.com/users will give users, localhosttest.com/products,etc
+- Routing refers to how an application’s endpoints (URIs) respond to client requests.
 - Client will make requests to those routes that are defined in your server
 
-# Requests:
+# Get Requests:
 
-- Get: When you want to query the server for some data.
-  - ex: // these are all routes that the user will query the server to do something
-    // "/"=> base url so when the client accesses the base url then the server will be sending hello world
-    app.get("/", (request, response) => {
-    response.status(201).send({ msg: "Hellow" });
-    });
-- Post
-- Delete
-- Put
+When you want to query the server for some data.
+
+- The "/"
+  app.get("/", (request, response) => {
+  response.status(201).send({ msg: "Message" });
+  });
+
+# Route Params:
+
+Route parameters are named URL segments that are used to capture the values specified at their position in the URL. The captured values are populated in the req.params object, with the name of the route parameter specified in the path as their respective keys.
+
+- ex: localhost/api/users/4; 4 being the route param
+
+# Query Params:
+
+- Extra bits at the end of a URL (e.g., form inputs, search bar)
+- ex: localhost/products?key=value&key2=value2
